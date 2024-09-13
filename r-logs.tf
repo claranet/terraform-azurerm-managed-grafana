@@ -1,14 +1,14 @@
 module "diagnostics" {
-  source = "claranet/diagnostic-settings/azurerm"
-  # version = "~> 6.5.0"
+  source  = "claranet/diagnostic-settings/azurerm"
+  version = "~> 6.5.0"
 
-  resource_id = azurerm_dashboard_grafana.managed_grafana.id
+  resource_id = azurerm_dashboard_grafana.this.id
 
   logs_destinations_ids = var.logs_destinations_ids
   log_categories        = var.logs_categories
   metric_categories     = var.logs_metrics_categories
 
-  custom_name = var.custom_diagnostic_settings_name
+  custom_name = var.diagnostic_settings_custom_name
   name_prefix = var.name_prefix
   name_suffix = var.name_suffix
 }
