@@ -74,7 +74,7 @@ module "managed_grafana" {
 | Name | Version |
 |------|---------|
 | azurecaf | ~> 1.2, >= 1.2.22 |
-| azurerm | ~> 3.39 |
+| azurerm | ~> 3.92 |
 
 ## Modules
 
