@@ -1,7 +1,7 @@
 # Azure Managed Grafana
 [![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/claranet/managed-grafana/azurerm/)
 
-Azure module to deploy a [Azure Managed Grafana](https://docs.microsoft.com/en-us/azure/xxxxxxx).
+Azure module to deploy a [Azure Managed Grafana](https://azure.microsoft.com/en-us/products/managed-grafana).
 
 <!-- BEGIN_TF_DOCS -->
 ## Global versioning rule for Claranet Azure modules
@@ -63,6 +63,11 @@ module "run" {
   resource_group_name = module.rg.resource_group_name
 }
 
+data "azuread_group" "admin" {
+  display_name     = "Contoso Admins"
+  security_enabled = true
+}
+
 module "managed_grafana" {
   source  = "claranet/managed-grafana/azurerm"
   version = "x.x.x"
@@ -74,6 +79,13 @@ module "managed_grafana" {
   client_name = var.client_name
   environment = var.environment
   stack       = var.stack
+
+  grafana_major_version = 10
+  api_key_enabled       = true
+
+  grafana_admin_role_object_ids = {
+    "Contoso Admin Group" = data.azuread_group.admin.object_id
+  }
 
   logs_destinations_ids = [
     module.run.logs_storage_account_id,
@@ -120,7 +132,7 @@ module "managed_grafana" {
 | custom\_name | Custom Azure Managed Grafana, generated if not set. | `string` | `""` | no |
 | default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
 | deterministic\_outbound\_ip\_enabled | Enable deterministic outbound IP for Grafana. | `bool` | `true` | no |
-| diagnostic\_settings\_custom\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
+| diagnostic\_settings\_custom\_name | Custom name of the diagnostics settings, name will be `default` if not set. | `string` | `"default"` | no |
 | environment | Project environment. | `string` | n/a | yes |
 | extra\_tags | Additional tags to add on resources. | `map(string)` | `{}` | no |
 | grafana\_admin\_role\_object\_ids | Map of object names => IDs for Grafana Admin role. | `map(string)` | `{}` | no |
@@ -131,7 +143,7 @@ module "managed_grafana" {
 | location | Azure region to use. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
 | logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
-| logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br>If you want to specify an Azure EventHub to send logs and metrics to, you need to provide a formated string with both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the `|` character. | `list(string)` | n/a | yes |
+| logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br>If you want to specify an Azure EventHub to send logs and metrics to, you need to provide a formated string with both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the `pipe` character. | `list(string)` | n/a | yes |
 | logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
 | name\_prefix | Optional prefix for the generated name. | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name. | `string` | `""` | no |
@@ -154,4 +166,4 @@ module "managed_grafana" {
 
 ## Related documentation
 
-Microsoft Azure documentation: xxxx
+Microsoft Azure documentation: [Azure Managed Grafana documentation](https://learn.microsoft.com/en-us/azure/managed-grafana/).
