@@ -8,8 +8,8 @@ Azure module to deploy a [Azure Managed Grafana](https://azure.microsoft.com/en-
 
 | Module version | Terraform version | OpenTofu version | AzureRM version |
 | -------------- | ----------------- | ---------------- | --------------- |
-| >= 8.x.x       | **Unverified**    | 1.6.x            | >= 3.0          |
-| >= 7.x.x       | 1.3.x, <= 1.5.x   |                  | >= 3.0          |
+| >= 8.x.x       | **Unverified**    | 1.8.x            | >= 4.0          |
+| >= 7.x.x       | 1.3.x             |                  | >= 3.0          |
 | >= 6.x.x       | 1.x               |                  | >= 3.0          |
 | >= 5.x.x       | 0.15.x            |                  | >= 2.0          |
 | >= 4.x.x       | 0.13.x / 0.14.x   |                  | >= 2.0          |
@@ -34,35 +34,6 @@ More details about variables set by the `terraform-wrapper` available in the [do
 [Hashicorp Terraform](https://github.com/hashicorp/terraform/). Instead, we recommend to use [OpenTofu](https://github.com/opentofu/opentofu/).
 
 ```hcl
-module "azure_region" {
-  source  = "claranet/regions/azurerm"
-  version = "x.x.x"
-
-  azure_region = var.azure_region
-}
-
-module "rg" {
-  source  = "claranet/rg/azurerm"
-  version = "x.x.x"
-
-  location    = module.azure_region.location
-  client_name = var.client_name
-  environment = var.environment
-  stack       = var.stack
-}
-
-module "run" {
-  source  = "claranet/run/azurerm"
-  version = "x.x.x"
-
-  client_name         = var.client_name
-  environment         = var.environment
-  stack               = var.stack
-  location            = module.azure_region.location
-  location_short      = module.azure_region.location_short
-  resource_group_name = module.rg.resource_group_name
-}
-
 data "azuread_group" "admin" {
   display_name     = "Contoso Admins"
   security_enabled = true
@@ -103,7 +74,7 @@ module "managed_grafana" {
 | Name | Version |
 |------|---------|
 | azurecaf | ~> 1.2, >= 1.2.22 |
-| azurerm | ~> 3.0 |
+| azurerm | ~> 3.39 |
 
 ## Modules
 
