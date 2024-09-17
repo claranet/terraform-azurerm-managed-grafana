@@ -1,7 +1,7 @@
 # Azure Managed Grafana
 [![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/claranet/managed-grafana/azurerm/)
 
-Azure module to deploy a [Azure Managed Grafana](https://azure.microsoft.com/en-us/products/managed-grafana).
+Azure module to deploy a [Azure Managed Grafana](https://learn.microsoft.com/en-us/azure/managed-grafana/overview).
 
 <!-- BEGIN_TF_DOCS -->
 ## Global versioning rule for Claranet Azure modules
@@ -86,7 +86,7 @@ module "managed_grafana" {
 
 | Name | Type |
 |------|------|
-| [azurerm_dashboard_grafana.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/dashboard_grafana) | resource |
+| [azurerm_dashboard_grafana.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/dashboard_grafana) | resource |
 | [azurerm_role_assignment.grafana_role_admin](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) | resource |
 | [azurerm_role_assignment.grafana_role_contributor](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) | resource |
 | [azurerm_role_assignment.grafana_role_viewer](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) | resource |
@@ -96,7 +96,7 @@ module "managed_grafana" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| api\_key\_enabled | Enable API key for Grafana. | `bool` | `true` | no |
+| api\_key\_enabled | Enable API key for Grafana. | `bool` | `false` | no |
 | auto\_generated\_domain\_name\_label\_scope | The scope of the auto-generated domain name label. | `string` | `"TenantReuse"` | no |
 | azure\_monitor\_workspace\_id | The Azure Monitor workspace ID for Grafana integration. | `string` | `null` | no |
 | client\_name | Client name/account used in naming. | `string` | n/a | yes |

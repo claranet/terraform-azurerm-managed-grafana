@@ -2,6 +2,7 @@ variable "grafana_major_version" {
   description = "The major version of Grafana to deploy."
   type        = number
   default     = 10
+  nullable    = false
 }
 
 variable "identity" {
@@ -17,7 +18,7 @@ variable "identity" {
 variable "api_key_enabled" {
   description = "Enable API key for Grafana."
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "deterministic_outbound_ip_enabled" {

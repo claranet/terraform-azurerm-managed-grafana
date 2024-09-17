@@ -1,4 +1,4 @@
-resource "azurerm_dashboard_grafana" "this" {
+resource "azurerm_dashboard_grafana" "main" {
   name     = local.managed_grafana_name
   location = var.location
 
