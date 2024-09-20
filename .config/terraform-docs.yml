@@ -17,8 +17,8 @@ content: |-
 
   | Module version | Terraform version | OpenTofu version | AzureRM version |
   | -------------- | ----------------- | ---------------- | --------------- |
-  | >= 8.x.x       | **Unverified**    | 1.6.x            | >= 3.0          |
-  | >= 7.x.x       | 1.3.x, <= 1.5.x   |                  | >= 3.0          |
+  | >= 8.x.x       | **Unverified**    | 1.8.x            | >= 4.0          |
+  | >= 7.x.x       | 1.3.x             |                  | >= 3.0          |
   | >= 6.x.x       | 1.x               |                  | >= 3.0          |
   | >= 5.x.x       | 0.15.x            |                  | >= 2.0          |
   | >= 4.x.x       | 0.13.x / 0.14.x   |                  | >= 2.0          |
