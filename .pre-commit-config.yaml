@@ -22,33 +22,31 @@ repos:
       - id: detect-private-key
         stages: [pre-commit]
 
-  - repo: https://github.com/tofuutils/pre-commit-opentofu
-    rev: v2.0.0
+  - repo: https://github.com/antonbabenko/pre-commit-terraform.git
+    rev: v1.96.1
     hooks:
-      - id: tofu_fmt
+      - id: terraform_fmt
         stages: [pre-commit]
-      - id: tofu_docs
+      - id: terraform_docs
         stages: [pre-commit]
         args:
           - --args=--config=.config/terraform-docs.yml
+          - --hook-config=--use-standard-markers=true
         exclude: "^modules|^example|^tools"
-      - id: tofu_validate
+      - id: terraform_validate
         stages: [pre-commit]
         exclude: ^examples
         args:
           - --tf-init-args=-upgrade
           - --hook-config=--retry-once-with-cleanup=true
-      - id: tofu_tflint
+      - id: terraform_tflint
         stages: [pre-commit]
         exclude: ^examples
         args:
           - --args=--config=__GIT_WORKING_DIR__/.config/tflint.hcl
           - --env-vars=TFLINT_LOG="info"
-      - id: tofu_trivy
+      - id: terraform_trivy
         stages: [pre-commit]
-        args:
-          - --args=--severity HIGH,CRITICAL
-          - --args=--skip-dirs '**/.terraform'
 
   - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
     rev: v9.18.0
