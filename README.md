@@ -6,16 +6,15 @@ Azure module to deploy a [Azure Managed Grafana](https://learn.microsoft.com/en-
 <!-- BEGIN_TF_DOCS -->
 ## Global versioning rule for Claranet Azure modules
 
-| Module version | Terraform version | OpenTofu version | AzureRM version |
-| -------------- | ----------------- | ---------------- | --------------- |
-| >= 8.x.x       | **Unverified**    | 1.8.x            | >= 4.0          |
-| >= 7.x.x       | 1.3.x             |                  | >= 3.0          |
-| >= 6.x.x       | 1.x               |                  | >= 3.0          |
-| >= 5.x.x       | 0.15.x            |                  | >= 2.0          |
-| >= 4.x.x       | 0.13.x / 0.14.x   |                  | >= 2.0          |
-| >= 3.x.x       | 0.12.x            |                  | >= 2.0          |
-| >= 2.x.x       | 0.12.x            |                  | < 2.0           |
-| <  2.x.x       | 0.11.x            |                  | < 2.0           |
+| Module version | Terraform version | AzureRM version |
+| -------------- | ----------------- | --------------- |
+| >= 7.x.x       | 1.3.x             | >= 3.0          |
+| >= 6.x.x       | 1.x               | >= 3.0          |
+| >= 5.x.x       | 0.15.x            | >= 2.0          |
+| >= 4.x.x       | 0.13.x / 0.14.x   | >= 2.0          |
+| >= 3.x.x       | 0.12.x            | >= 2.0          |
+| >= 2.x.x       | 0.12.x            | < 2.0           |
+| <  2.x.x       | 0.11.x            | < 2.0           |
 
 ## Contributing
 
@@ -29,9 +28,6 @@ More details are available in the [CONTRIBUTING.md](./CONTRIBUTING.md#pull-reque
 This module is optimized to work with the [Claranet terraform-wrapper](https://github.com/claranet/terraform-wrapper) tool
 which set some terraform variables in the environment needed by this module.
 More details about variables set by the `terraform-wrapper` available in the [documentation](https://github.com/claranet/terraform-wrapper#environment).
-
-⚠️ Since modules version v8.0.0, we do not maintain/check anymore the compatibility with
-[Hashicorp Terraform](https://github.com/hashicorp/terraform/). Instead, we recommend to use [OpenTofu](https://github.com/opentofu/opentofu/).
 
 ```hcl
 data "azuread_group" "admin" {
@@ -110,18 +106,18 @@ module "managed_grafana" {
 | grafana\_contributor\_role\_object\_ids | Map of object names => IDs for Grafana Contributor role. | `map(string)` | `{}` | no |
 | grafana\_major\_version | The major version of Grafana to deploy. | `number` | `10` | no |
 | grafana\_viewer\_role\_object\_ids | Map of object names => IDs for Grafana Viewer role. | `map(string)` | `{}` | no |
-| identity | Identity block information. | <pre>object({<br>    type         = optional(string, "SystemAssigned")<br>    identity_ids = optional(list(string))<br>  })</pre> | `{}` | no |
+| identity | Identity block information. | <pre>object({<br/>    type         = optional(string, "SystemAssigned")<br/>    identity_ids = optional(list(string))<br/>  })</pre> | `{}` | no |
 | location | Azure region to use. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
 | logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
-| logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br>If you want to specify an Azure EventHub to send logs and metrics to, you need to provide a formated string with both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the `pipe` character. | `list(string)` | n/a | yes |
+| logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br/>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br/>If you want to specify an Azure EventHub to send logs and metrics to, you need to provide a formated string with both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the `pipe` character. | `list(string)` | n/a | yes |
 | logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
 | name\_prefix | Optional prefix for the generated name. | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name. | `string` | `""` | no |
 | public\_network\_access\_enabled | Whether the Azure Managed Grafana is available from public network. | `bool` | `false` | no |
 | resource\_group\_name | Name of the resource group. | `string` | n/a | yes |
 | sku | The SKU of the Grafana. | `string` | `"Standard"` | no |
-| smtp | SMTP configuration for Grafana. | <pre>object({<br>    enabled                   = bool<br>    host                      = optional(string)<br>    user                      = optional(string)<br>    password                  = optional(string)<br>    start_tls_policy          = optional(string)<br>    from_address              = optional(string)<br>    from_name                 = optional(string, "Azure Managed Grafana Notification")<br>    verification_skip_enabled = optional(bool, false)<br>  })</pre> | `null` | no |
+| smtp | SMTP configuration for Grafana. | <pre>object({<br/>    enabled                   = bool<br/>    host                      = optional(string)<br/>    user                      = optional(string)<br/>    password                  = optional(string)<br/>    start_tls_policy          = optional(string)<br/>    from_address              = optional(string)<br/>    from_name                 = optional(string, "Azure Managed Grafana Notification")<br/>    verification_skip_enabled = optional(bool, false)<br/>  })</pre> | `null` | no |
 | stack | Project stack name. | `string` | n/a | yes |
 | zone\_redundancy\_enabled | Enable zone redundant for Grafana. | `bool` | `true` | no |
 
