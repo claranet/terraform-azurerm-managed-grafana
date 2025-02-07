@@ -45,7 +45,7 @@ module "managed_grafana" {
 
   location            = module.azure_region.location
   location_short      = module.azure_region.location_short
-  resource_group_name = module.rg.resource_group_name
+  resource_group_name = module.rg.name
 
   client_name = var.client_name
   environment = var.environment
@@ -73,14 +73,14 @@ module "managed_grafana" {
 
 | Name | Version |
 |------|---------|
-| azurecaf | ~> 1.2, >= 1.2.22 |
-| azurerm | ~> 3.92 |
+| azurecaf | ~> 1.2.28 |
+| azurerm | ~> 4.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| diagnostics | claranet/diagnostic-settings/azurerm | ~> 7.0.0 |
+| diagnostics | claranet/diagnostic-settings/azurerm | ~> 8.0.0 |
 
 ## Resources
 
@@ -114,7 +114,7 @@ module "managed_grafana" {
 | location | Azure region to use. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
 | logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
-| logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br/>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br/>If you want to specify an Azure EventHub to send logs and metrics to, you need to provide a formated string with both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the `pipe` character. | `list(string)` | n/a | yes |
+| logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br/>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br/>If you want to use Azure EventHub as a destination, you must provide a formatted string containing both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the <code>&#124;</code> character. | `list(string)` | n/a | yes |
 | logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
 | name\_prefix | Optional prefix for the generated name. | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name. | `string` | `""` | no |
@@ -129,10 +129,11 @@ module "managed_grafana" {
 
 | Name | Description |
 |------|-------------|
-| dashboard\_grafana | Azure Managed Grafana output object |
-| id | Azure Managed Grafana ID |
-| identity\_principal\_id | Azure Managed Grafana system identity principal ID |
-| name | Azure Managed Grafana name |
+| id | Azure Managed Grafana ID. |
+| identity\_principal\_id | Azure Managed Grafana system identity principal ID. |
+| module\_diagnostics | Diagnostics settings module outputs. |
+| name | Azure Managed Grafana name. |
+| resource | Azure Managed Grafana output object. |
 <!-- END_TF_DOCS -->
 
 ## Related documentation
