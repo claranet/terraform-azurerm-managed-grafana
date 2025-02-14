@@ -2,11 +2,11 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 3.92"
+      version = "~> 4.0"
     }
     azurecaf = {
       source  = "claranet/azurecaf"
-      version = "~> 1.2, >= 1.2.22"
+      version = "~> 1.2.28"
     }
   }
 }

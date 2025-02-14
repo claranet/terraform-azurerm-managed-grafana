@@ -1,5 +1,5 @@
 resource "azurerm_dashboard_grafana" "main" {
-  name     = local.managed_grafana_name
+  name     = local.name
   location = var.location
 
   resource_group_name = var.resource_group_name
