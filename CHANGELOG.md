@@ -1,3 +1,44 @@
+## 8.0.1 (2025-10-01)
+
+### Code Refactoring
+
+* **deps:** 🔗 update claranet/azurecaf to ~> 1.3.0 🔧 eb59ba1
+
+### Miscellaneous Chores
+
+* **⚙️:** ✏️ update template identifier for MR review 58bc734
+* 🗑️ remove old commitlint configuration files 2884e86
+* **deps:** 🔗 bump AzureRM provider version to v4.31+ 15a2be1
+* **deps:** update dependency claranet/diagnostic-settings/azurerm to ~> 8.1.0 b6e6678
+* **deps:** update dependency opentofu to v1.10.0 56668f0
+* **deps:** update dependency opentofu to v1.10.1 01ff9b0
+* **deps:** update dependency opentofu to v1.10.3 b601fa0
+* **deps:** update dependency opentofu to v1.10.6 3e4dd33
+* **deps:** update dependency opentofu to v1.9.1 2b483d8
+* **deps:** update dependency pre-commit to v4.2.0 740950e
+* **deps:** update dependency terraform-docs to v0.20.0 b6cd208
+* **deps:** update dependency tflint to v0.57.0 1aad0f4
+* **deps:** update dependency tflint to v0.58.0 8d3635c
+* **deps:** update dependency tflint to v0.58.1 19e4fd7
+* **deps:** update dependency tflint to v0.59.1 58285a9
+* **deps:** update dependency trivy to v0.60.0 514b791
+* **deps:** update dependency trivy to v0.61.1 4bb16ab
+* **deps:** update dependency trivy to v0.62.0 69c222e
+* **deps:** update dependency trivy to v0.62.1 b0ab6c5
+* **deps:** update dependency trivy to v0.63.0 97a75d3
+* **deps:** update dependency trivy to v0.66.0 0ae95f4
+* **deps:** update dependency trivy to v0.67.0 caddf55
+* **deps:** update pre-commit hook alessandrojcm/commitlint-pre-commit-hook to v9.21.0 efbfeba
+* **deps:** update pre-commit hook alessandrojcm/commitlint-pre-commit-hook to v9.22.0 0d3164a
+* **deps:** update pre-commit hook pre-commit/pre-commit-hooks to v6 8576740
+* **deps:** update pre-commit hook tofuutils/pre-commit-opentofu to v2.2.0 a010797
+* **deps:** update pre-commit hook tofuutils/pre-commit-opentofu to v2.2.1 d555d82
+* **deps:** update terraform claranet/diagnostic-settings/azurerm to ~> 8.2.0 b217e33
+* **deps:** update tools 431e342
+* **deps:** update tools 42bc64d
+* **deps:** update tools 65ad5ea
+* **deps:** update tools 6d8b99e
+
 ## 8.0.0 (2025-02-14)
 
 ### ⚠ BREAKING CHANGES
