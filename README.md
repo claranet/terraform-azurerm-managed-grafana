@@ -72,20 +72,20 @@ module "managed_grafana" {
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | azurecaf | >= 1.2.28 |
 | azurerm | ~> 4.31 |
 
 ## Modules
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | diagnostics | claranet/diagnostic-settings/azurerm | ~> 8.2.0 |
 
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [azurerm_dashboard_grafana.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/dashboard_grafana) | resource |
 | [azurerm_role_assignment.grafana_role_admin](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) | resource |
 | [azurerm_role_assignment.grafana_role_contributor](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) | resource |
@@ -95,7 +95,7 @@ module "managed_grafana" {
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | api\_key\_enabled | Enable API key for Grafana. | `bool` | `false` | no |
 | auto\_generated\_domain\_name\_label\_scope | The scope of the auto-generated domain name label. | `string` | `"TenantReuse"` | no |
 | azure\_monitor\_workspace\_id | The Azure Monitor workspace ID for Grafana integration. | `string` | `null` | no |
@@ -128,7 +128,7 @@ module "managed_grafana" {
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | id | Azure Managed Grafana ID. |
 | identity\_principal\_id | Azure Managed Grafana system identity principal ID. |
 | module\_diagnostics | Diagnostics settings module outputs. |
