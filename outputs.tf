@@ -1,6 +1,7 @@
 output "resource" {
   description = "Azure Managed Grafana output object."
   value       = azurerm_dashboard_grafana.main
+  sensitive   = true
 }
 
 output "id" {
